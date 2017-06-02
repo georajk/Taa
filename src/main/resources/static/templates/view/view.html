@@ -1,0 +1,190 @@
+<div>
+	<div class="" id="">
+		<div class="col-md-12"
+			style="padding-top: 1%;">
+			<div class="panel panel-default">
+				<div class="panel-heading"></div>
+				<div class="panel-body">
+					<form class="">
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Name:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.submittedBy}} </span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Request Type:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span> {{viewCtrl.reportDetails.type}}</span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Course Code:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.courseName}}</span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Course ID#:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.courseId}} </span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Class Dates:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.classDates}} </span>
+							</div>
+						</div>
+						<div class="col-md-12" data-ng-hide="viewCtrl.newClsDtHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">New Class Dates:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.newClassDates}} </span>
+							</div>
+						</div>
+						<div class="col-md-12" data-ng-hide="viewCtrl.clsTmHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Class Times:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.classTime}}</span>
+							</div>
+						</div>
+						<div class="col-md-12" data-ng-hide="viewCtrl.instNmHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Instructor Name:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.instructorName}}</span>
+							</div>
+						</div>
+						<div class="col-md-12" data-ng-hide="viewCtrl.newInstNmHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">New Instructor
+									Name:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.newInstructorName}}</span>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Class
+									Location(s):</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.classLocation}}</span>
+							</div>
+						</div>
+
+						<div class="col-md-12" data-ng-hide="viewCtrl.clsCapHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Class Capacity:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.classCapacity}} </span>
+							</div>
+						</div>
+
+						<div class="col-md-12" data-ng-hide="viewCtrl.existCapHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Existing
+									Capacity:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.classCapacity}} </span>
+							</div>
+						</div>
+
+						<div class="col-md-12" data-ng-hide="viewCtrl.newClsCapHide">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">New Capacity:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.newClassCapacity}} </span>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Reason:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.reasonForChange}} </span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Impact to
+									Schedule:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.impactOfRequest}} </span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Manager or
+									Supervisor:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.managerOrSupr}} </span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Request approved
+									?</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.appr}}</span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Request
+									completed ?</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.comp}}</span>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-3" id="pad2px" style="text-align: right;">
+								<label class="control-label" for="name">Completed on:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<span>{{viewCtrl.reportDetails.comp}}</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-default"
+				data-ng-hide="viewCtrl.hideStdntDetails">
+				<div class="panel-heading" style="text-align: center;">
+					Student List</div>
+				<div class="panel-body">
+					<div id="uiGrid" ui-grid="viewCtrl.gridOptions" class="grid"
+						style="width: 50%; height:150px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" data-ng-click="viewCtrl.ok()">OK</button>
+	</div>
+</div>

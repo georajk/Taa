@@ -1,0 +1,22 @@
+.imghead {
+	background: url(../images/banner.jpg);
+}
+#pad2px{
+	padding-bottom:2px;
+}
+.success{
+	background-color: green;
+	color:white;
+}
+.info{
+	background-color: cornflowerblue;
+	color:white;
+}
+.error{
+	background-color:#ff3300;
+	color:white;
+}
+
+.headerGrid { 
+	color: white;background-color:#696969 !important; 
+	 }

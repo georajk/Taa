@@ -1,0 +1,358 @@
+<div class="col-md-12" style="padding-top:1%; padding-left:10%; padding-right:4%;">
+		<div class="panel panel-default" >
+			<div class="panel-heading"></div>
+			<div class="panel-body">
+				<form action="request/form/create">
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="name">Your Name:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<input type="text" class="form-control" id="name" data-ng-model="reqCtrl.requesterName"/>
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="rqtTyp">Request Type:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<select class="form-control" data-ng-options="opt.value as opt.label for opt in reqCtrl.options"
+								data-ng-model="reqCtrl.requestType" data-ng-change="reqCtrl.selectedItem(reqCtrl.requestType);">
+							</select>
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="crseCd">Course Code*:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<input type="text" class="form-control" id="crseCd" data-ng-model="reqCtrl.courseName"/>
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="crseId">Course ID#:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<input type="text" class="form-control" id="crseId" data-ng-model="reqCtrl.courseId"/>
+						</div>
+					</div>
+					<div class="form-inline" data-ng-hide="reqCtrl.oldClsLoctn">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="clsLoc">Class Location:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<select class="form-control" data-ng-options="classLoc as classLoc.label for classLoc in reqCtrl.classLocs" data-ng-model="reqCtrl.classLocation"  data-ng-change="reqCtrl.selectedLoc(reqCtrl.classLocation);">
+							</select>
+						</div>
+					</div>
+					<div class="form-inline" data-ng-hide="reqCtrl.newClsLoctn">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="clsLoc">New Class Location:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+							<select class="form-control" data-ng-options="classLoc as classLoc.label for classLoc in reqCtrl.classLocs" data-ng-model="reqCtrl.newLocation"  data-ng-change="reqCtrl.selectedLoc(reqCtrl.newLocation);">
+							</select>
+						</div>
+					</div>
+					<div class="form-inline" data-ng-hide="reqCtrl.otherLoc">
+					<div class="col-md-3"></div>
+						<div class="col-md-3" id="pad2px" style="text-align:right;padding:0%">
+							<label class="control-label" for="clsLoc">Other</label><span>(Name of facility, city, state):</span>
+						</div>
+						<div class="col-md-6" id="pad2px">
+							<input type="text" class="form-control" id="other" data-ng-model="reqCtrl.otherLocation"/>
+						</div>
+					</div>
+					<div class="form-inline" data-ng-hide="reqCtrl.extclsAdd">
+						<div class="col-md-12" style="padding: 0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="input-group" for="extClsDt">Existing Class Dates*:</label>
+							</div>
+							<div class="col-md-3" >
+								<p class="input-group">
+									<input type="text" class="form-control"
+										uib-datepicker-popup="{{format}}" data-ng-model="reqCtrl.classStartDt"
+										is-open="reqCtrl.opened" datepicker-options="reqCtrl.fromDtOptions"
+										ng-required="true" close-text="Close" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											data-ng-click="reqCtrl.fromDate($event)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div><div class="col-md-1" style="padding-top:1%;width:35px;"><span>to</span></div>
+							<div class="col-md-3">
+								<p class="input-group">
+									<input type="text" class="form-control"
+										uib-datepicker-popup="{{format}}" data-ng-model="reqCtrl.classEndDt"
+										is-open="reqCtrl.toopened " datepicker-options="reqCtrl.toDtOptions"
+										ng-required="true" close-text="Close" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											data-ng-click="reqCtrl.toDate($event)">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="clsAdd" data-ng-hide="reqCtrl.clsAdd" >
+						<div class="form-inline" >
+							<div class="col-md-12" style="padding:0%;">
+								<div class="col-md-3" id="pad2px" style="text-align:right;">
+									<label class="control-label" for="extClsDt">Class Dates*:</label>
+								</div>
+								<div class="col-md-3" >
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="{{format}}"
+											data-ng-model="reqCtrl.newClassStartDt" is-open="reqCtrl.clsfromopened "
+											datepicker-options="reqCtrl.clsfromdateOptions" ng-required="true"
+											close-text="Close" /> <span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												data-ng-click="reqCtrl.clsfromDate($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div><div class="col-md-1" style="padding-top:1%;width:35px;"><span>to</span></div>
+								<div class="col-md-3" >
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="{{format}}" data-ng-model="reqCtrl.newClassEndDt"
+											is-open="reqCtrl.clstoopened "
+											datepicker-options="reqCtrl.clstodateOptions" ng-required="true"
+											close-text="Close" /> <span class="input-group-btn">
+											<button type="button" class="btn btn-default" data-ng-click="reqCtrl.clstoDate($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-inline" >
+							<div class = "col-md-12" style="padding:0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">Instructor Name:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<input type="text" class="form-control" id="instrName" data-ng-model="reqCtrl.trainingClassInstructorNm"/>
+							</div>
+							
+							</div>
+						</div>
+						<div class="form-inline">
+							<div class = "col-md-12" style="padding:0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right; padding-top:3%;">
+								<label class="control-label" for="name">Class Time*:</label>
+							</div>
+							<div class="col-md-3">
+								<div uib-timepicker ng-model="reqCtrl.originalClassStartTm"
+									data-ng-change="changed()" hour-step="reqCtrl.hstep" minute-step="reqCtrl.mstep"
+									show-meridian=true></div>
+							</div>
+							<div class="col-md-1"
+								style="padding-top: 3%; padding-right: 0%; padding-left: 2%;">
+								<span>to</span>
+							</div>
+							<div class="col-md-3">
+								<div uib-timepicker ng-model="reqCtrl.originalClassEndTm"
+									data-ng-change="changed()" hour-step="reqCtrl.hstep" minute-step="reqCtrl.mstep"
+									show-meridian=true></div>
+							</div>
+							<div class="col-md-3"></div>
+							</div>
+						</div>
+						<div class="form-inline">
+						<div class="col-md-12" style="padding:0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">Hotel Info*:</label><br/>
+								<span>(Name, City, State)</span>
+							</div>
+							<div class="col-md-3" id="pad2px">
+								<input type="text" class="form-control" id="htlInfo" data-ng-model="reqCtrl.hotelLocation"/>
+							</div>
+						</div>
+						</div>
+						<br/><br/>
+						<div class="form-inline">
+						<div class="col-md-12" style="padding:0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">Class Capacity*:</label>
+							</div>
+							<div class="col-md-3" id="pad2px">
+								<input type="text" class="form-control" id="clsCap" data-ng-model="reqCtrl.newCapacity"/>
+							</div>
+						</div>
+						</div>
+						
+					</div>
+					<div class="clsDtChg" data-ng-hide="reqCtrl.clsDtChg">
+						<div class="form-inline">
+							<div class="col-md-12" style="padding:0%;">
+								<div class="col-md-3" id="pad2px" style="text-align:right;">
+									<label class="control-label" for="extClsDt">New Class Start Date*:</label>
+								</div>
+								<div class="col-md-3" >
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="{{format}}"
+											data-ng-model="reqCtrl.newStartDate" is-open="reqCtrl.newClsfromopened "
+											datepicker-options="reqCtrl.newClsfromdateOptions" ng-required="true"
+											close-text="Close" /> <span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												data-ng-click="reqCtrl.newClsfromDate($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div><div class="col-md-1" style="padding-top:1%;width:35px;"><span>to</span></div>
+								<div class="col-md-3" >
+									<p class="input-group">
+										<input type="text" class="form-control"
+											uib-datepicker-popup="{{format}}" data-ng-model="reqCtrl.newEndDate"
+											is-open="reqCtrl.newClstoopened "
+											datepicker-options="reqCtrl.newClstodateOptions" ng-required="true"
+											close-text="Close" /> <span class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												data-ng-click="reqCtrl.newClstoDate($event)">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clsTmChg" data-ng-hide="reqCtrl.clsTmChg">
+						<div class="form-inline">
+							<div class="col-md-12" style="padding: 0%;">
+								<div class="col-md-3" id="pad2px" style="text-align: right; padding-top:3%;">
+									<label class="control-label" for="name">New Class Time*:</label>
+								</div>
+								<div class="col-md-3" id="">
+									<div uib-timepicker data-ng-model="reqCtrl.classNewStartTm" data-ng-change="changed()" hour-step="reqCtrl.hstep" minute-step="reqCtrl.mstep" show-meridian=true></div> 
+								</div><div class="col-md-1" style="padding-top:3%;padding-right:0%;padding-left:2%;"><span >to</span></div>
+								<div class="col-md-3" id="">
+									<div uib-timepicker data-ng-model="reqCtrl.classNewEndTm" data-ng-change="changed()" hour-step="reqCtrl.hstep" minute-step="reqCtrl.mstep" show-meridian=true></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clsCapChg" data-ng-hide="reqCtrl.clsCapChg">
+						<div class="form-inline">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">Existing Capacity*:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+							<input type="text" class="form-control" id="extCap" data-ng-model="reqCtrl.trainingClassInitialCapacity"/>
+							</div>
+						</div>
+						<div class="form-inline">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">New Capacity*:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+							<input type="text" class="form-control" id="newCap" data-ng-model="reqCtrl.newCapacity"/>
+							</div>
+						</div>
+					</div>
+					<div class="insNmChg" data-ng-hide="reqCtrl.insNmChg">
+						<div class="form-inline">
+							<div class="col-md-12" style="padding: 0%;">
+								<div class="col-md-3" id="pad2px" style="text-align:right;">
+									<label class="control-label" for="name">Instructor Name:</label>
+								</div>
+								<div class="col-md-3" id="pad2px">
+									<input type="text" class="form-control" id="instrFrmNm" data-ng-model="reqCtrl.trainingClassInstructorNm"/>
+									<span style="float: right;padding-top:1%;">to</span>
+								</div>
+								<div class="col-md-3" id="pad2px">
+									<input type="text" class="form-control" id="instrToNm" data-ng-model="reqCtrl.newInstructorName"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="addStdnt" data-ng-hide="reqCtrl.addStdnt">
+						<div class="form-inline">
+							<div class="col-md-12">
+								<div class="col-md-3"></div>
+								<div class="col-md-3">
+									<label class="control-label" for="name">Student Name:</label>
+								</div>
+								<div class="col-md-3">
+									<label class="control-label" for="name">Dealer Name:</label>
+								</div>
+							</div>
+							<div class="col-md-12" data-ng-repeat=" std in reqCtrl.tblChangeCancelStudents">
+								<div class="col-md-3"></div>
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="instrFrmNm" data-ng-model="std.studentName"/>
+								</div>
+								<div class="col-md-3">
+									<input type="text" class="form-control" id="instrToNm" data-ng-model="std.dealerInfo"/>
+								</div>
+							</div>
+						</div>
+						<div class="button" style="text-align: center;">
+							<a href="" data-ng-click="reqCtrl.add();"> 
+								<span class="glyphicon glyphicon-plus"></span></a> 
+							<a href="" data-ng-click="reqCtrl.tblChangeCancelStudents.splice(parseInt($index)-1,1);">
+							<span class="glyphicon glyphicon-minus"></span></a>
+						</div>
+					</div>
+					<br/><br/>
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;"> 
+							<label class="control-label" for="name">Reason:</label>
+						</div>
+						<div class="col-md-9" id="pad2px">
+						<textarea class="form-control" data-ng-model="reqCtrl.reasonForChange"></textarea>
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="col-md-3" id="pad2px" style="text-align:right;">
+							<label class="control-label" for="name"> Impact to Schedule: </label> <br/>
+							<span>(# of students, # of classes, financial
+								implications, mandated training, time, instructors, resources,
+								rescheduling possibilities, curriculum development)</span>
+						</div>
+						<div class="col-md-9" id="pad2px">
+						<textarea class="form-control" data-ng-model="reqCtrl.impactOfRequest"></textarea>
+						</div>
+					</div>
+					
+					<div class="form-inline">
+						<div class="col-md-12" style="padding: 0%;">
+							<div class="col-md-3" id="pad2px" style="text-align:right;">
+								<label class="control-label" for="name">Manager or Supervisor:</label>
+							</div>
+							<div class="col-md-9" id="pad2px">
+								<select class="form-control" id="mngrOrSupr" name="mngrOrSupr"
+									data-ng-model="reqCtrl.managerOrSupervisorName" multiple="">
+									<option>Lynn Adams</option>
+									<option>Ian Brissette</option>
+									<option>Bill Chester</option>
+									<option>Jason Fullman</option>
+									<option>Mark gibson</option>
+									<option>Michael McGinnis</option>
+									<option>Anthony Palladino</option>
+									<option>Jan Venegas-Cortes</option>
+									<option>Jim Perry</option>
+									<option>Jone Whittaker</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="col-md-12" style="text-align:center;">
+					<button type="submit" class="btn btn-primary" data-ng-click ="reqCtrl.submit();" >Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
