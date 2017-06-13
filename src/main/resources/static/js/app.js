@@ -21,6 +21,9 @@ var reqTrainAstApp;
 		}).when('/view', {
 			templateUrl: 'templates/view/view.html',
 			controller: 'viewController as viewCtrl'
+		}).when('/loginPortal', {
+			templateUrl: 'login.html',
+			controller: 'homePageController as homePgCtrl'
 		}).otherwise({
 			redirectTo: '/home'
 		});
